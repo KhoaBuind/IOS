@@ -15,6 +15,8 @@
 @interface ViewController : UIViewController<MyCustomDelegate, EditDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *mTable;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (assign,nonatomic) BOOL isFiltered;
 
 @end
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7dw-GN-EGz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7dw-GN-EGz">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -35,23 +35,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yKe-3S-9ED">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QWB-3g-mdW">
-                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCustomTask" rowHeight="64" id="C0T-uE-QZx" customClass="CustomPrototypeCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="64"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C0T-uE-QZx" id="vbS-70-SxS">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6M-qE-dVK">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLk-xr-zKh">
                                                     <rect key="frame" x="512" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -75,6 +73,12 @@
                                                     <rect key="frame" x="13" y="34" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6M-qE-dVK">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -102,10 +106,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QWB-3g-mdW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EfL-5f-nrv"/>
-                            <constraint firstAttribute="trailing" secondItem="QWB-3g-mdW" secondAttribute="trailing" id="Xsi-bf-zA8"/>
-                            <constraint firstItem="QWB-3g-mdW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eXs-ur-LFs"/>
-                            <constraint firstItem="QWB-3g-mdW" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/2" id="g77-yC-ElY"/>
+                            <constraint firstItem="yKe-3S-9ED" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fzw-Wv-uLd"/>
+                            <constraint firstItem="QWB-3g-mdW" firstAttribute="top" secondItem="yKe-3S-9ED" secondAttribute="bottom" id="GVO-vL-Fq3"/>
+                            <constraint firstAttribute="trailing" secondItem="QWB-3g-mdW" secondAttribute="trailing" id="JwS-OZ-krl"/>
+                            <constraint firstItem="yKe-3S-9ED" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KAo-rA-FSj"/>
+                            <constraint firstAttribute="trailing" secondItem="yKe-3S-9ED" secondAttribute="trailing" id="Kkz-Bc-7NO"/>
+                            <constraint firstItem="QWB-3g-mdW" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="Zbh-2S-zoy"/>
+                            <constraint firstItem="QWB-3g-mdW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d9d-Fo-cLR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Task List" id="jUq-wN-tZt">
@@ -117,6 +124,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mTable" destination="QWB-3g-mdW" id="Ex3-od-cPX"/>
+                        <outlet property="searchBar" destination="yKe-3S-9ED" id="Nay-IU-krs"/>
                         <segue destination="N5A-OE-jbh" kind="show" identifier="editSeque" id="kzZ-Yv-myd"/>
                     </connections>
                 </viewController>

@@ -26,11 +26,18 @@ int timeList;
 - (void)viewDidLoad {
     [super viewDidLoad];
     //array = [NSMutableArray arrayWithObjects:@"Don Dep",@"Lam Bai Tap",@"Tap The Duc", nil];
-    TodoItem *i1 = [[TodoItem alloc] initWithTitle:@"Don Dep" AndTimeToComplete:20];
-    TodoItem *i2 = [[TodoItem alloc] initWithTitle:@"Lam Bai Tap" AndTimeToComplete:30];
-    array = [NSMutableArray arrayWithObjects:i1,i2,nil];
+    TodoItem *i1 = [[TodoItem alloc] initWithTitle:@"A" AndTimeToComplete:20];
+    TodoItem *i2 = [[TodoItem alloc] initWithTitle:@"B" AndTimeToComplete:20];
+    TodoItem *i3 = [[TodoItem alloc] initWithTitle:@"C" AndTimeToComplete:20];
+    TodoItem *i4 = [[TodoItem alloc] initWithTitle:@"D" AndTimeToComplete:20];
+    TodoItem *i5 = [[TodoItem alloc] initWithTitle:@"E" AndTimeToComplete:20];
+    TodoItem *i6 = [[TodoItem alloc] initWithTitle:@"F" AndTimeToComplete:20];
+    TodoItem *i7 = [[TodoItem alloc] initWithTitle:@"G" AndTimeToComplete:30];
+    
+    array = [NSMutableArray arrayWithObjects:i1,i2,i3,i4,i5,i6,i7,nil];
     _mTable.dataSource = self;
     _mTable.delegate = self;
+    _searchBar.delegate = (id)self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +53,15 @@ int timeList;
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     long rowCount;
-    rowCount = array.count;
+    if(self.isFiltered)
+    {
+        rowCount = filterArray.count;
+    }
+    else
+    {
+        rowCount = array.count;
+    }
+    
     return rowCount;
 }
 
@@ -55,13 +70,44 @@ int timeList;
     CustomPrototypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCustomTask"];
 //    NSString *doItem = [array objectAtIndex:indexPath.row];
 //    cell.lblWork.text = doItem;
-    TodoItem *tmpItem =  [array objectAtIndex:indexPath.row];
+    TodoItem *tmpItem;
+    if(self.isFiltered)
+    {
+        tmpItem =  [filterArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        tmpItem = [array objectAtIndex:indexPath.row];
+    }
     cell.delegate = self;
     cell.lblWork.text = tmpItem.title;
     cell.lblTime.text = [NSString stringWithFormat:@"%d minute(s)",tmpItem.timeToComplete];
     cell.btnEdit.tag  = indexPath.row;
     return cell;
 
+}
+
+//SearchBar Text Change
+-(void)searchBar:(UISearchBar *) searchBar textDidChange:(nonnull NSString *)searchText
+{
+    if(searchText.length == 0)
+    {
+        self.isFiltered = false;
+    }
+    else
+    {
+        self.isFiltered = true;
+        filterArray = [[NSMutableArray alloc] init];
+        
+        for (int i= 0; i < array.count; i++) {
+            NSRange mRange = [array[i] rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if(mRange.location != NSNotFound)
+            {
+                [filterArray addObject:array[i]];
+            }
+        }
+    }
+    [_mTable reloadData];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
